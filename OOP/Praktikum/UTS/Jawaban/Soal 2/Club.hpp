@@ -2,14 +2,15 @@
 #include "ClubMember.hpp"
 #include <string>
 #include <vector>
+using namespace std;
 
 class Club {
 private:
-    std::string clubName;
-    std::vector<ClubMember*> roster;
+    string clubName;
+    vector<ClubMember*> roster;
 
 public:
-    Club(std::string name);
+    Club(string name);
 
     void addMember(ClubMember* member);
     void printSquadReport() const;

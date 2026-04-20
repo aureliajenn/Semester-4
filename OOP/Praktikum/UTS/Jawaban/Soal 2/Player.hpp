@@ -1,12 +1,19 @@
 #pragma once
 #include "ClubMember.hpp"
 #include <string>
+using namespace std;
 
-class Player : // TODO: tentukan mode inheritance yang benar
-{
+class Player : public virtual ClubMember {
 protected:
-    // TODO: deklarasikan atribut kelas (position, stamina, rating)
+    string position;
+    int stamina;
+    double rating;
 
 public:
-    // TODO: deklarasikan constructor, method calculateWage() dan pure virtual calculateRating() serta destructor
+    Player(const string& name, int age, const string& contractEnd, const string& position, int stamina, double rating);
+
+    double calculateWage() const override;
+    virtual double calculateRating() const = 0;
+
+    virtual ~Player();
 };

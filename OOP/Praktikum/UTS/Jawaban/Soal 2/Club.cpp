@@ -2,29 +2,33 @@
 #include "Player.hpp"
 #include "Staff.hpp"
 #include <iostream>
+using namespace std;
 
-Club::Club(std::string name)
-    // TODO: constructor
-{
-}
+Club::Club(string name) : clubName(name) {}
 
 void Club::addMember(ClubMember* member) {
-    // TODO: push member ke roster
+    roster.push_back(member);
 }
 
 void Club::printSquadReport() const {
-    std::cout << "\n======================================\n";
-    std::cout << "  " << clubName << " - Squad Report\n";
-    std::cout << "======================================\n";
-    // TODO: panggil getProfile() dari setiap member
+    cout << "\n======================================\n";
+    cout << "  " << clubName << " - Squad Report\n";
+    cout << "======================================\n";
+    for (ClubMember* m : roster) {
+        cout << m->getProfile() << "\n";
+    }
 }
 
 void Club::runTraining() const {
-    std::cout << "\n--- Match Day Actions ---\n";
-    // TODO: panggil work() dari setiap member
+    cout << "\n--- Match Day Actions ---\n";
+    for (ClubMember* m : roster) {
+        m->work();
+    }
 }
 
 Club::~Club() {
-    std::cout << "\n--- Releasing Club Roster ---\n";
-    // TODO: delete semua ClubMember* di roster
+    cout << "\n--- Releasing Club Roster ---\n";
+    for (ClubMember* m : roster) {
+        delete m;
+    }
 }

@@ -1,12 +1,13 @@
 #include "ClubMember.hpp"
 #include "Formatter.hpp"
 #include <iostream>
+using namespace std;
 
-ClubMember::ClubMember()
-    // TODO: constructor
+ClubMember::ClubMember(const string& name, int age, const string& contractEnd)
+    : name(name), age(age), contractEnd(contractEnd)
 {
 }
 
 ClubMember::~ClubMember() {
-    // TODO: log destruction menggunakan Formatter::log
+    Formatter::log("~ClubMember", name, "contract record cleared.");
 }

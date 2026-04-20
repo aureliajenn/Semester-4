@@ -1,12 +1,21 @@
 #pragma once
 #include "Player.hpp"
 #include "Staff.hpp"
+using namespace std;
 
-class PlayerCoach : // TODO: tentukan mode inheritance yang benar dan pastikan urutannya tepat
-{
+class PlayerCoach : public Player, public Staff {
 private:
-    // TODO: deklarasikan atribut kelas (yearsAsPlayer, isCurrentlyPlaying)
+    int yearsAsPlayer;
+    bool isCurrentlyPlaying;
 
 public:
-    // TODO: deklarasikan constructor, methods work(), calculateRating(), getSpecialty(), calculateWage(), getProfile(), dan destructor
+    PlayerCoach(const string& name, int age, const string& contractEnd, const string& position, int stamina, double rating, const string& license, int yearsAsPlayer, bool isCurrentlyPlaying);
+
+    void work() const override;
+    double calculateRating() const override;
+    string getSpecialty() const override;
+    double calculateWage() const override;
+    string getProfile() const override;
+
+    ~PlayerCoach();
 };

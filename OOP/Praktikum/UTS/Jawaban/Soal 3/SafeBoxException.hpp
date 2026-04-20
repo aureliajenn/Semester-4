@@ -6,39 +6,43 @@
 #include <sstream>
 using namespace std;
 
-// Base class untuk semua exception SafeBox.
-// Turunan dari std::exception override what() di setiap subclass.
 class SafeBoxException : public exception {
 public:
-    // TODO: deklarasikan what() sebagai pure virtual
+    virtual const char* what() const noexcept = 0;
 };
-
 
 class BoxFullException : public SafeBoxException {
+private:
+    string msg;
 public:
-    // TODO: konstruktor menerima kapasitas (int)
-    // TODO: implementasi what() -> "Box penuh: kapasitas maks N"
+    BoxFullException(int cap) {
+        msg = "Box penuh: kapasitas maks " + to_string(cap);
+    }
+    const char* what() const noexcept override {
+        return msg.c_str();
+    }
 };
-
 
 class BoxEmptyException : public SafeBoxException {
 public:
-    // TODO: implementasi what() -> "Box kosong"
+    const char* what() const noexcept override {
+        return "Box kosong";
+    }
 };
 
-
-// Template: item yang tidak valid dapat bertipe apa saja (int, string, dll.)
-// Gunakan ostringstream untuk mengonversi T ke string di dalam what().
-// Contoh penggunaan ostringstream:
-// int x = 42;
-// ostringstream oss;
-// oss << "Nilai x: " << x;
-// string msg = oss.str(); // msg = "Nilai x: 42"
 template<typename T>
 class InvalidItemException : public SafeBoxException {
+private:
+    string msg;
 public:
-    // TODO: konstruktor menerima item (const T&)
-    // TODO: implementasi what() -> "Item tidak valid: <item>"
+    InvalidItemException(const T& item) {
+        ostringstream oss;
+        oss << "Item tidak valid: " << item;
+        msg = oss.str();
+    }
+    const char* what() const noexcept override {
+        return msg.c_str();
+    }
 };
 
 #endif
