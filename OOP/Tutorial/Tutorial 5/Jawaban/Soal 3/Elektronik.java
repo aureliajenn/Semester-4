@@ -4,17 +4,18 @@ public class Elektronik extends Barang {
     public Elektronik(String nama, int harga, int watt) {
         // TODO: implementasi
         super(nama, harga);
+        this.watt = watt;
     }
 
     public int getWatt() {
         // TODO: implementasi
-        return 0;
+        return this.watt;
     }
 
     @Override
     public String info() {
         // TODO: implementasi
         // Format: "[Elektronik] nama - harga IDR (wattW)"
-        return null;
+        return "[Elektronik] " + nama + " - " + harga + " ID (" + watt + "W)";
     }
 }

@@ -6,40 +6,52 @@ public class Kotak<T extends Barang> {
 
     public Kotak(int kapasitas) {
         // TODO: implementasi
+        this.kapasitas = kapasitas;
+        this.items = new ArrayList<>();
     }
 
     public boolean tambah(T item) {
         // TODO: implementasi
+        if (penuh()) {
+            return false;
+        }
+        items.add(item);
         return false;
     }
 
     public T ambil() {
         // TODO: implementasi (LIFO - ambil item terakhir)
-        return null;
+        if (kosong()) {
+            return null;
+        }
+        return items.remove(items.size() - 1);
     }
 
     public T lihat(int index) {
         // TODO: implementasi
-        return null;
+        if (index < 0 || index >= items.size()){
+            return null;
+        }
+        return items.get(index);
     }
 
     public int jumlah() {
         // TODO: implementasi
-        return 0;
+        return items.size();
     }
 
     public int kapasitas() {
         // TODO: implementasi
-        return 0;
+        return kapasitas;
     }
 
     public boolean penuh() {
         // TODO: implementasi
-        return false;
+        return items.size() == kapasitas;
     }
 
     public boolean kosong() {
         // TODO: implementasi
-        return false;
+        return items.isEmpty();
     }
 }

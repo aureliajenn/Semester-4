@@ -3,17 +3,19 @@ public abstract class Barang {
     protected int harga;
 
     public Barang(String nama, int harga) {
+        this.nama = nama;
+        this.harga = harga;
         // TODO: implementasi
     }
 
     public String getNama() {
         // TODO: implementasi
-        return null;
+        return this.nama;
     }
 
     public int getHarga() {
         // TODO: implementasi
-        return 0;
+        return this.harga;
     }
 
     public abstract String info();

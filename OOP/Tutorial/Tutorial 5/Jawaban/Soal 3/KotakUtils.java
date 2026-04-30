@@ -5,19 +5,39 @@ public class KotakUtils {
         // TODO: implementasi
         // Cetak info() setiap item, satu per baris
         // Jika kosong, cetak "Kotak kosong"
+        if (kotak.kosong()) {
+            System.out.println("Kotak kosong");
+            return;
+        }
+        for (int i = 0; i < kotak.jumlah(); i++) {
+            System.out.println(kotak.lihat(i).info());
+        }
     }
 
     // Upper-bounded wildcard: menghitung total harga
     public static int totalHarga(Kotak<? extends Barang> kotak) {
         // TODO: implementasi
-        return 0;
+        int total = 0;
+        for (int i = 0; i < kotak.jumlah(); i++) {
+            total += kotak.lihat(i).getHarga();
+        }
+        return total;
     }
 
     // Upper-bounded wildcard: mencari item termahal
     public static Barang termahal(Kotak<? extends Barang> kotak) {
         // TODO: implementasi
         // Kembalikan null jika kosong
-        return null;
+        if (kotak.kosong()) {
+            return null;
+        }
+        Barang termahal = kotak.lihat(0);
+        for (int i = 1; i < kotak.jumlah(); i++) {
+            if (kotak.lihat(i).getHarga() > termahal.getHarga()) {
+                termahal = kotak.lihat(i);
+            }
+        }
+        return termahal;
     }
 
     // Bounded wildcard dengan type parameter (PECS: Producer Extends, Consumer Super)
@@ -28,12 +48,17 @@ public class KotakUtils {
         // Pindahkan item dari src ke dst secara LIFO
         // Berhenti jika src kosong atau dst penuh
         // Kembalikan jumlah item yang dipindahkan
-        return 0;
+        int moved = 0;
+        while (!src.kosong() && !dst.penuh()) {
+            dst.tambah(src.ambil());
+            moved++;
+        }
+        return moved;
     }
 
     // Unbounded wildcard: hanya perlu menghitung jumlah
     public static int hitungItem(Kotak<?> kotak) {
         // TODO: implementasi
-        return 0;
+        return kotak.jumlah();
     }
 }

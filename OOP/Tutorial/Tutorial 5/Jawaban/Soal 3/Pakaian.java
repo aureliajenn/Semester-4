@@ -4,17 +4,18 @@ public class Pakaian extends Barang {
     public Pakaian(String nama, int harga, String ukuran) {
         // TODO: implementasi
         super(nama, harga);
+        this.ukuran = ukuran;
     }
 
     public String getUkuran() {
         // TODO: implementasi
-        return null;
+        return this.ukuran;
     }
 
     @Override
     public String info() {
         // TODO: implementasi
         // Format: "[Pakaian] nama - harga IDR (ukuran)"
-        return null;
+        return "[Pakaian] " + nama + " - " + harga + " IDR (" + ukuran + ")";
     }
 }
