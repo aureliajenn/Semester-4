@@ -12,6 +12,8 @@ public class LibraryIterator<T> implements Iterator<T> {
     private int cursor; // points to the next element to return
 
     public LibraryIterator(List<T> items) {
+        this.items =  items;
+        this.cursor = 0;
         // TODO: Implementasikan konstruktor untuk LibraryIterator
     }
 
@@ -26,7 +28,7 @@ public class LibraryIterator<T> implements Iterator<T> {
     @Override
     public boolean hasNext() {
         //TODO: Implementasikan hasNext
-        return false;
+        return cursor < items.size();
     }
 
     /**
@@ -38,6 +40,7 @@ public class LibraryIterator<T> implements Iterator<T> {
         if (!hasNext()) {
             throw new NoSuchElementException("No more elements in the library.");
         }
+        return items.get(cursor++);
         // TODO: Implementasikan sisanya
     }
 
@@ -50,7 +53,7 @@ public class LibraryIterator<T> implements Iterator<T> {
      */
     public boolean hasPrevious() {
         // TODO: Implementasikan has Previous
-        return false;
+        return cursor > 0;
     }
 
     /**
@@ -61,6 +64,7 @@ public class LibraryIterator<T> implements Iterator<T> {
         if (!hasPrevious()) {
             throw new NoSuchElementException("Already at the beginning of the library.");
         }
+        return items.get(--cursor);
         // TODO: implementasikan sisanya
     }
 
@@ -70,5 +74,6 @@ public class LibraryIterator<T> implements Iterator<T> {
      */
     public void reset() {
         // TODO: implementasikan reset
+        cursor = 0;
     }
 }
