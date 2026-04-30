@@ -1,4 +1,37 @@
-public class SummonedMonster {
+public class SummonedMonster implements ISummoned {
+    private Monster monster;
+    private boolean isFaceUp;
+    private boolean isAttacking;
+
+    public SummonedMonster(Monster m, boolean faceUp, boolean attacking) {
+        this.monster = m;
+        this.isFaceUp = faceUp;
+        this.isAttacking = attacking;
+    }
+    @Override
+    public boolean flip() {
+        if (this.isFaceUp) {
+            return false;
+        }
+        this.isFaceUp = true;
+        return true;
+    }
+
+
+    @Override
+    public void rotate() {
+        this.isAttacking = !this.isAttacking;
+    }
+
+    @Override
+    public int getPositionValue(){
+        if(this.isAttacking) {
+            return this.monster.getAttackValue();
+        } else {
+            return this.monster.getDefenseValue();
+        }
+    }
+
     @Override
     public void render() {
         String msg = "Monster ";
