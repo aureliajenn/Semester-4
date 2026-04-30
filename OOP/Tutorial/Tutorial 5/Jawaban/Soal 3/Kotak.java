@@ -16,7 +16,7 @@ public class Kotak<T extends Barang> {
             return false;
         }
         items.add(item);
-        return false;
+        return true;
     }
 
     public T ambil() {

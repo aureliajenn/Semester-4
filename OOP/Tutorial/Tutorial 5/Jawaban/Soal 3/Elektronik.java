@@ -16,6 +16,6 @@ public class Elektronik extends Barang {
     public String info() {
         // TODO: implementasi
         // Format: "[Elektronik] nama - harga IDR (wattW)"
-        return "[Elektronik] " + nama + " - " + harga + " ID (" + watt + "W)";
+        return "[Elektronik] " + nama + " - " + harga + " IDR (" + watt + "W)";
     }
 }
