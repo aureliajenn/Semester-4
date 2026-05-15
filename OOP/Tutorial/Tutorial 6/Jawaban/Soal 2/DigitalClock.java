@@ -59,7 +59,7 @@ public class DigitalClock {
             case COMPACT:
                 return String.format("%02d%02d%02d", hour, minute, second);
             default:
-                assert false : "";
+                assert false : "Unexpected mode: " + mode;
                 return "";
         }
     }
