@@ -1,3 +1,2 @@
 # Semester-4
-13524089
-I think I'm gonna die in this house...
+Learning resource for 4th Semester in IF
